@@ -1,0 +1,16 @@
+zone "ocean.stagiaire.lan" {
+    type master;
+    file "/etc/bind/db.ocean.stagiaire.lan";
+};
+
+zone "mountain.stagiaire.lan" {
+    type slave;
+    file "/var/cache/bind/slaves/db.mountain.stagiaire.lan";
+    masters { 10.10.10.2; };
+};
+
+zone "nassan.stagiaire.lan" {
+    type slave;
+    file "/var/cache/bind/slaves/db.nassan.stagiaire.lan";
+    masters { 10.10.10.3; };
+};

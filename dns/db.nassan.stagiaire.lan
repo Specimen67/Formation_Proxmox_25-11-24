@@ -1,0 +1,19 @@
+;
+; BIND data file for nassan.stagiaire.lan zone
+;
+$TTL    604800
+@       IN      SOA     ns.nassan.stagiaire.lan. root.nassan.stagiaire.lan. (
+                        2023100903         ; Serial
+                        604800             ; Refresh
+                        86400              ; Retry
+                        2419200            ; Expire
+                        604800 )           ; Negative Cache TTL
+;
+@       IN      NS      ns.nassan.stagiaire.lan.
+@       IN      A       172.16.254.1          ; Adresse IP du routeur
+
+ns      IN      A       172.16.254.1          ; Adresse IP du serveur DNS (ici le routeur)
+
+; Entrées pour les serveurs Proxmox
+nas    IN      A       172.16.253.10         ; Adresse IP de nas
+san    IN      A       172.16.253.11         ; Adresse IP de san

@@ -1,0 +1,37 @@
+# Fichier : /etc/nginx/sites-available/pve1
+
+server {
+    listen 443 ssl;
+    server_name pve1.domaine.stagiaire.lan;
+
+    ssl_certificate /etc/nginx/ssl/domaine.stagiaire.lan.crt;
+    ssl_certificate_key /etc/nginx/ssl/domaine.stagiaire.lan.key;
+
+    ssl_protocols TLSv1.2 TLSv1.3;
+    ssl_prefer_server_ciphers on;
+
+    location / {
+        proxy_pass https://px1.domaine.stagiaire.lan:8006/;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        # Ajout du support pour WebSocket
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection "Upgrade";
+        proxy_http_version 1.1;
+        proxy_ssl_verify off;  # Désactive la vérification SSL car Proxmox utilise un certificat auto-signé
+        client_max_body_size 10G;  # Permet de télécharger des fichiers jusqu'à 10 Go
+        proxy_connect_timeout 600;
+        proxy_send_timeout 600;
+        proxy_read_timeout 600;
+        send_timeout 600;
+
+    }
+}
+
+# Redirection HTTP vers HTTPS
+server {
+    listen 80;
+    server_name pve1.domaine.stagiaire.lan;
+    return 301 https://$host$request_uri;
+}

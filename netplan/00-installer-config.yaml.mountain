@@ -1,0 +1,21 @@
+network:
+  version: 2
+  ethernets:
+    ens34:
+      dhcp4: true
+    ens35:
+      dhcp4: false
+      addresses:
+        - 10.0.0.2/24
+      nameservers:
+        addresses:
+          - 127.0.0.1
+      routes:
+        - to: 172.16.254.0/24  
+          via: 10.0.0.1
+        - to: 172.16.253.0/24  
+          via: 10.0.0.3
+    ens36:
+      dhcp4: false
+      addresses:
+        - 172.16.255.1/24
