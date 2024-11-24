@@ -1,4 +1,5 @@
 #!/bin/bash
+#!/bin/bash
 apt install nginx -y
 read -p "Entrez votre prénom pour l'inclure dans le FQDN: " prenom
 echo "Quel domaine voulez-vous configurer ?"

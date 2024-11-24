@@ -1,3 +1,4 @@
+#!/bin/bash
 echo "Choisissez le domaine à configurer :"
 select domaine in ocean mountain nassan; do
     if [[ -n "$domaine" ]]; then

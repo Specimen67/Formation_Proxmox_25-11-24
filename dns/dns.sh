@@ -1,3 +1,4 @@
+#!/bin/bash
 read -p "Entrez votre prénom pour l'inclure dans le nom de domaine : " prenom
 if [[ -z "$prenom" ]]; then
     echo "Le prénom ne peut pas être vide. Veuillez réessayer."
