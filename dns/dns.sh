@@ -37,6 +37,6 @@ apt update && apt install -y bind9
 
 cp "$named_file" "$bind_directory"
 cp "$db_file" "$bind_directory$db_renamed"
-echo 'include "/etc/bind/named.conf.local.ocean";' | sudo tee -a /etc/bind/named.conf
+echo "include "/etc/bind/named.conf.local.$domaine";" | sudo tee -a /etc/bind/named.conf
 
 systemctl restart bind9

@@ -6,11 +6,11 @@ zone "nassan.stagiaire.lan" {
 zone "ocean.stagiaire.lan" {
     type slave;
     file "/var/cache/bind/slaves/db.ocean.stagiaire.lan";
-    masters { 10.10.10.1; };
+    masters { 172.16.254.1; };
 };
 
 zone "mountain.stagiaire.lan" {
     type slave;
     file "/var/cache/bind/slaves/db.mountain.stagiaire.lan";
-    masters { 10.10.10.2; };
+    masters { 172.16.255.1; };
 };
